@@ -1,4 +1,4 @@
-<?php 
+<?php
 $vec = array(10,6,7,8,23,1,2,5);
 $col = array('cero' => 'azul', 'uno' => 'verde', 'rojo','amarillo','marron','blanco');
 
