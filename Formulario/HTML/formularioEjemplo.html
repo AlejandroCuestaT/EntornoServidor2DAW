@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+</head>
+<body>
+    <form action="../PHP/phpEjemplo.php" method="post" enctype="multipart/form-data">
+        <!-- Tipo texto -->
+         Texto:
+        <input type="text" name="texto" value="Valor por defecto">
+        <br><br>
+
+        <!-- Tipo radio -->
+        Sexo: 
+        <INPUT TYPE="radio" NAME="sexo" VALUE="Mujer" CHECKED> Mujer
+        <INPUT TYPE="radio" NAME="sexo" VALUE="Hombre"> Hombre
+        <br><br>   
+
+        <!-- Tipo oculto -->
+        <input type="hidden" name="oculto" value="Oculto">
+
+        <br><br>  
+        
+        <!-- Tipo contraseña -->
+        Password: <input type="password" name="password">
+
+        <br><br>
+
+        Color: 
+        <select name="color">
+        <option value="Rojo" selected>Rojo</option>
+        <option value="Verde" selected>Verde</option>  
+        <option value="Azul" selected>Azul</option>
+        </select>    
+
+        <br><br>
+
+        <!-- Tipo checkbox -->
+
+        CHECKBOX: 
+        <INPUT TYPE="checkbox" NAME="extra" VALUE="garaje" CHECKED>Garaje
+
+        <br><br>
+
+
+        <!-- Tipo checkbox multiple-->
+        CHECKBOX MULTIPLE:
+        <INPUT TYPE="checkbox" NAME="extras[ ]" VALUE="garaje" CHECKED>Garaje
+        <INPUT TYPE="checkbox" NAME="extras[ ]" VALUE="piscina">Piscina
+        <INPUT TYPE="checkbox" NAME="extras[ ]" VALUE="jardin">Jardin
+
+        <br><br>
+
+        <!-- Tipo select multiple -->
+        <SELECT MULTIPLE SIZE="3" NAME="idiomas[ ]">
+        <OPTION VALUE="ingles" SELECTED>Ingles</OPTION>
+        <OPTION VALUE="frances">Frances</OPTION>
+        <OPTION VALUE="aleman">Aleman</OPTION>
+        <OPTION VALUE="holandes">Holandes</OPTION>
+        </SELECT>
+
+        <br><br>
+
+        <!-- Tipo TextArea -->
+        <TEXTAREA COLS="50" ROWS="4" NAME="comentario">
+        Texto de ejemplo
+        </TEXTAREA>
+        
+        <br><br>
+
+        <!-- Tipo fichero -->
+        <INPUT TYPE="file" NAME="fichero">
+
+        <br><br>
+
+        <!-- Tipo boton submit -->
+        <input type="submit" name="aceptar" value="aceptar">
+        
+        <!-- Tipo boton reset -->
+        <input type="reset" name="reset" value="reset">
+    </form>
+</body>
+</html>

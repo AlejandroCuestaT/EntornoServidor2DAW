@@ -1,0 +1,8 @@
+Actor
+Actriz
+Cantante
+TenisActorta
+Futbolista
+Baloncestista
+Empresario
+Director de cine

@@ -1,0 +1,32 @@
+<?php 
+$dias_semana = array(
+    "Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"
+);
+
+$fechaActual= new DateTime('now');
+
+//Recoge el dia de la semana en numero
+$dia_semana = $fechaActual->format("w");
+$dia_semana = $dias_semana[$dia_semana-1];
+
+$bgColor = '';
+
+switch($dia_semana){
+    case 'Lunes':
+        $bgColor = '#FFCCCC';
+        break;
+    case 'Martes':
+        $bgColor = '#CCE5FF';  
+        break;
+    case 'Miercoles':
+        $bgColor = '#CCFFCC';
+        break;
+    case 'Jueves':
+        $bgColor = '#FFFFCC';
+        break;  
+    case 'Viernes':
+        $bgColor = '#FFD700';
+        break;            
+
+}
+?>

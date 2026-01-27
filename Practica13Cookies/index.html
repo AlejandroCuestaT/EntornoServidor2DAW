@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <style>
+      h1 {
+        margin-top: 20px;
+        color: blue;
+        text-align: center;
+      }
+
+      h3 {
+        margin-top: 20px;
+        color: blue;
+        text-align: center;
+      }
+
+      .linea {
+        margin-top: 20px;
+        border-bottom: 10px solid blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Creacion y lista de cookies por nivel</h1>
+    <h1 class="linea"></h1>
+    <br /><br />
+
+    <form
+      action="creaCookieNivel.php"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <table>
+        <tr>
+          <h3>
+            <a href="formularioCreaCookie.html">Creacion de cookie por nivel</a>
+          </h3>
+        </tr>
+        <tr>
+          <h3><a href="listarCookies.php">Listado Cookies nivel 0</a></h3>
+        </tr>
+
+        <tr>
+          <h3><a href="Nivel1/listaCookies.php">Listado Cookies nivel 1</a></h3>
+        </tr>
+
+        <tr>
+          <h3>
+            <a href="Nivel1/Nivel2/listaCookies.php">Listado Cookies nivel 2</a>
+          </h3>
+        </tr>
+
+        <tr>
+          <h3>
+            <a href="Nivel1/Nivel2/Nivel3/listaCookies.php"
+              >Listado Cookies nivel 3</a
+            >
+          </h3>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

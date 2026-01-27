@@ -1,0 +1,21 @@
+
+fopen(nombre_fichero,modo,include_path)
+fclose()
+
+Modos:
+r - Lectura solo - Puntero inicio
+r+ - Lectura y escritura - Puntero inicio
+w - Escritura - Puntero inicio
+w+ - Estritura lectura - Puntero inicio
+
+[Diferencia entre r+ y w+ es que w borra el contenido del fichero 
+y si no exite lo crea]
+
+a - Escritura - Puntero al final [ Si no existe lo crea ]
+a+ Lectura y escritura - Puntero al final
+x,x+ Mismo que w pero no crea el fichero si no existe
+c,c+ Mismo que w pero no trunca el fichero si no existe
+
+Include path - No es obligatorio y sirve para poner ruta por defecto
+
+SIEMPRE fclose() al terminar con el directorio

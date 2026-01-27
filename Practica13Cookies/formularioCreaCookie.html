@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <style>
+      h1 {
+        margin-top: 20px;
+        color: blue;
+        text-align: center;
+      }
+
+      h3 {
+        margin-top: 20px;
+        color: blue;
+        text-align: center;
+      }
+
+      .linea {
+        margin-top: 20px;
+        border-bottom: 10px solid blue;
+      }
+
+      table {
+        margin: auto;
+        border-spacing: 20px 25px;
+      }
+
+      tr {
+        margin: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Creacion de Cookies por Nivel</h1>
+    <h1 class="linea"></h1>
+
+    <br /><br />
+
+    <form
+      action="creaCookieNivel.php"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <table>
+        <tr>
+          <th>Nombre: <input type="text" name="nombre" /></th>
+          <th>Contenido: <input type="text" name="contenido" /></th>
+        </tr>
+        <tr>
+          <th>
+            Nivel:
+            <select name="nivel">
+              <option value="nivel0">Nivel 0</option>
+              <option value="nivel1">Nivel 1</option>
+              <option value="nivel2">Nivel 2</option>
+              <option value="nivel3">Nivel 3</option>
+            </select>
+          </th>
+
+          <th>
+            <input type="submit" name="aceptar" value="aceptar" />
+          </th>
+        </tr>
+      </table>
+    </form>
+
+    <h3><a href="Nivel1/creaCookies.php">Creacion automatica Cookie nivel 1</a></h3>
+    <h3><a href="Nivel1/Nivel2/creaCookies.php">Creacion automatica Cookie nivel 2</a></h3>
+    <h3><a href="Nivel1/Nivel2/Nivel3/creaCookies.php">Creacion automatica Cookie nivel 3</a></h3>
+
+  </body>
+</html>

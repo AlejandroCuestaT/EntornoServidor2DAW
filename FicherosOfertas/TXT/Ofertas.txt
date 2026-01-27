@@ -1,0 +1,7 @@
+ABDE CONSULTING \t Ingeniero,Programador J2EE \t Informática y Telecomunicaciones \t 12/12/2013
+ABDE CONSULTING \t Ingeniero,Programador J2EE \t Informática y Telecomunicaciones \t 12/12/2013
+LIONBRIGDE TECHNOLOGIES, INC \t Asesor de Internet \t Informática y Telecomunicaciones \t 1/12/2013
+SOGETI ESPAÑA \t Desarrollador Jr ORACLE FORMS \t Informática y Telecomunicaciones \t 29/11/2013
+SOGETI ESPAÑA \t Desarrollador Jr NET \t Informática y Telecomunicaciones \t 29/11/2013
+MAKEYOUSUIT \t Programador web senior \t Informática y Telecomunicaciones \t 15/11/2013
+AGENCIALEVEL \t Desarrollador de sistemas web PHP \t Informática y Telecomunicaciones \t 14/11/2013

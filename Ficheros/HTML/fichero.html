@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+</head>
+<body>
+    <!-- Imprescindible poner enctype ="multipart/form-data si queremos que lleguen los ficheros" -->
+    <form action="../PHP/fichero.php" method="post" enctype="multipart/form-data">
+    Nombre usuario:<input type='text' name='usuario'/><br/>
+    Fichero con su fotografia:<input type='file' name='imagen'/><br/>
+    <input type="submit" name="aceptar" value="aceptar">
+    </form>
+</body>
+</html>
