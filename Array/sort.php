@@ -45,7 +45,9 @@ $col = array('cero' => 'azul', 'uno' => 'verde', 'rojo','amarillo','marron','bla
 echo 'KSORT <br>';
 $res4 = ksort($col);
 print_r($col);
-echo '<br><br>';
+echo '<br>'; //quitamos <br> para github
+
+//Cambio github modificacion
 
 
 ?>
