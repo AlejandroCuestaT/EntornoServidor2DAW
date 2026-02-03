@@ -1,68 +1,49 @@
 <?php
-// Recogemos los datos del formulario usando $_POST
-// Usamos el operador ternario (condición ? si_verdadero : si_falso) para evitar errores si está vacío
-$email_destino = $_POST['destinatario_email'];
-$asunto        = $_POST['tema'];
-$texto_mensaje = isset($_POST['mensaje']) ? $_POST['mensaje'] : "Sin mensaje";
-$imagen        = $_POST['imagen'];
+//Establezco conexion
+$conexion = mysqli_connect("localhost", "alex", "1234", "ejercicio_mail");
 
-// --- CONSTRUCCIÓN DEL CORREO (HTML) --- [cite: 11]
+//Recojo las datos por POST
+$idCliente = $_POST['idCliente'];
+$tema       = $_POST['tema'];
+$mensaje = $_POST['mensaje'];
+$foto       = $_POST['foto'];
 
-// Empezamos a crear el cuerpo del mensaje usando código HTML
+//Hacemos la query de la id en concreto y recogemos los datos del cliente
+$query = "SELECT nombre, apellidos, email FROM clientes WHERE id = $idCliente";
+$resultado = mysqli_query($conexion, $query);
+$cliente = mysqli_fetch_assoc($resultado);
+
+//Recogemos el correo del cliente
+$destinatario = $cliente['email'];
+$nombre = $cliente['nombre'] . " " . $cliente['apellidos'];
+
+//Texto del asunto
+$asunto = "From: Empresa de Alex <alex@scarlatti.com>\r\n";
+
+//Texto del cuerpo
 $cuerpo = "<html><body>";
-$cuerpo .= "<h2>Hola estimado cliente</h2>";
-$cuerpo .= "<p>Tienes un nuevo mensaje de nuestra empresa:</p>";
+$cuerpo .= "<h1>Hola " . $nombre . "</h1>";
+$cuerpo .= "<h3>Tema: " . $tema . "</h3>";
+$cuerpo .= "<p>" . $mensaje . "</p>";
 
-// Añadimos el texto que escribió el usuario en un recuadro bonito
-$cuerpo .= "<div style='border:1px solid #ccc; padding:10px; background-color:#f9f9f9;'>";
-$cuerpo .= "<p>" . nl2br($texto_mensaje) . "</p>"; // nl2br convierte los saltos de línea en <br>
-$cuerpo .= "</div>";
-
-// Lógica: Si ha seleccionado una imagen, la incluimos [cite: 18]
-if (!empty($imagen)) {
-    // NOTA: Para correos reales, la imagen debe estar alojada en un servidor real (http://midominio.com/img...)
-    // Aquí simulamos que la imagen se enlaza desde nuestra web local.
-    $ruta_imagen = "http://localhost/tu_proyecto/img/" . $imagen;
-    $cuerpo .= "<h3>Te enviamos esta postal:</h3>";
-    $cuerpo .= "<img src='$ruta_imagen' alt='Imagen adjunta' width='300'>";
+//Si no esta vacia la foto, se enseña
+if (!empty($foto)) {
+    $cuerpo .= "<p><img src='IMG/" . $foto . "' width='200'></p>";
 }
 
-$cuerpo .= "<p>Saludos cordiales,<br>Tu Empresa</p>";
+$cuerpo .= "<p>Desde Alex SL queriamos agradecerte tu trabajo y compromiso, sigue asi :)</p>";
 $cuerpo .= "</body></html>";
 
+//Enviamos el correo si el puerto 25 esta levantado y el correo existe
+if (mail($destinatario, $tema, $cuerpo, $asunto)) {
+    echo "<h1>Resultado del envío</h1>";
+    echo "<p>El correo ha sido capturado por el servidor local para: " . $destinatario . "</p>";
+} else {
+    echo "<h1>Error</h1>";
+    echo "<p>Asegúrate de que Test Mail Server Tool esté abierto en el puerto 25.</p>";
+}
 
-// --- CABECERAS (HEADERS) OBLIGATORIAS PARA HTML ---
-// Esto es vital. Sin esto, el correo se vería como código fuente puro (<html><body>...)
-$headers  = "MIME-Version: 1.0" . "\r\n";
-$headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+echo "<br><a href='index.php'>Volver a la página inicial</a>";
 
-// Cabeceras adicionales (quién lo envía)
-$headers .= "From: Empresa <no-reply@empresa.com>" . "\r\n";
-
-
-// --- ENVÍO DEL CORREO ---
-// La función mail devuelve TRUE si se aceptó para envío, FALSE si falló.
-$resultado = mail($email_destino, $asunto, $cuerpo, $headers);
-
+mysqli_close($conexion);
 ?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Resultado del Envío</title>
-</head>
-<body>
-    <center>
-        <?php if ($resultado): ?>
-            <h1 style="color: green;">¡Correo enviado con éxito!</h1>
-            <p>Se envió a: <?php echo $email_destino; ?></p>
-        <?php else: ?>
-            <h1 style="color: red;">Error al enviar</h1>
-            <p>Comprueba que tienes configurado un servidor SMTP (como Mercury o Sendmail) en tu XAMPP.</p>
-        <?php endif; ?>
-
-        <a href="index.php">Volver a enviar otro correo</a>
-    </center>
-</body>
-</html>
