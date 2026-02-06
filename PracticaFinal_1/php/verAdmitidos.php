@@ -18,6 +18,10 @@ try {
         die("Curso no encontrado.");
     }
 
+    //Cuenta los otros cursos en los que ya ha sido admitido
+    //Mira los solicitantes para este curso en especifico
+    //Ordena primero los que no tienen ningun curso admitido de mayor a menor por puntos
+    //Despues ordena a los que tienen uno o mas poniendo los primeros a los que tienen menos cursos admitidos
     $sql = "SELECT s.dni, s.nombre, s.apellidos, s.puntos, 
             (SELECT COUNT(*) 
              FROM solicitudes solicitud 
