@@ -14,3 +14,5 @@ if (isset($_GET['id'])) {
         die("Error al eliminar el curso: " . $e->getMessage());
     }
 }
+
+?>

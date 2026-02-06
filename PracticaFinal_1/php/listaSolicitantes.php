@@ -2,7 +2,6 @@
 session_start();
 include_once("conexion.php");
 
-// Seguridad: solo solicitantes logueados
 if (!isset($_SESSION['solicitante'])) {
     header("Location: login.php");
     exit;
@@ -11,7 +10,6 @@ if (!isset($_SESSION['solicitante'])) {
 $dni_usuario = $_SESSION['solicitante'];
 
 try {
-    // 1. Consultar solo cursos abiertos
     $sql = "SELECT * FROM cursos WHERE abierto = 1";
     $stmt = $conn->query($sql);
     $cursos = $stmt->fetchAll(PDO::FETCH_ASSOC);

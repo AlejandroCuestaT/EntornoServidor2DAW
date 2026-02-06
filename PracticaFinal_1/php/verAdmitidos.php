@@ -10,7 +10,6 @@ if (!isset($_SESSION['admin'])) {
 $idCurso = $_GET['id'];
 
 try {
-    // 1. Obtener datos del curso (nombre y número de plazas)
     $stmtCurso = $conn->prepare("SELECT nombre, numeroplazas FROM cursos WHERE codigo = :id");
     $stmtCurso->execute([':id' => $idCurso]);
     $curso = $stmtCurso->fetch(PDO::FETCH_ASSOC);
@@ -19,9 +18,6 @@ try {
         die("Curso no encontrado.");
     }
 
-    // 2. Tu consulta lógica: 
-    // Ordena primero por quienes tienen 0 cursos admitidos, luego 1, etc.
-    // Y dentro de ese grupo, por puntos de mayor a menor.
     $sql = "SELECT s.dni, s.nombre, s.apellidos, s.puntos, 
             (SELECT COUNT(*) 
              FROM solicitudes solicitud 

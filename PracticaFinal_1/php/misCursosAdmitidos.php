@@ -2,7 +2,6 @@
 session_start();
 include_once("conexion.php");
 
-// Seguridad: solo usuarios logueados
 if (!isset($_SESSION['solicitante'])) {
     header("Location: login.php");
     exit;
@@ -11,7 +10,6 @@ if (!isset($_SESSION['solicitante'])) {
 $dni = $_SESSION['solicitante'];
 
 try {
-    // Consulta: unimos cursos y solicitudes donde el usuario esté ADMITIDO
     $sql = "SELECT c.nombre, s.fechasolicitud 
             FROM solicitudes s
             INNER JOIN cursos c ON s.codigocurso = c.codigo
@@ -31,7 +29,6 @@ try {
     <meta charset="UTF-8">
     <title>Mis Cursos</title>
     <style>
-        /* Estilo muy básico: solo blanco y negro */
         body { 
             font-family: Arial, sans-serif; 
             margin: 20px; 

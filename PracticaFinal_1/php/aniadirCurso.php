@@ -2,7 +2,6 @@
 session_start();
 include_once("conexion.php");
 
-// Seguridad: solo admin
 if (!isset($_SESSION['admin'])) {
     header("Location: login.php");
     exit;
@@ -15,7 +14,6 @@ if (isset($_POST['guardar'])) {
     $abierto = isset($_POST['abierto']) ? 1 : 0;
 
     try {
-        // No incluimos 'codigo' porque es AI (Auto_Increment)
         $sql = "INSERT INTO cursos (nombre, abierto, numeroplazas, plazoinscripcion) 
                 VALUES (:nom, :abi, :pla, :fec)";
         $stmt = $conn->prepare($sql);
