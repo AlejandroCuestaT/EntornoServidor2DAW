@@ -46,7 +46,7 @@ try {
     
     <div class="links-superior">
         <a href="misCursosAdmitidos.php" class="btn">Ver mis cursos admitidos</a>
-        <a href="logout.php" class="btn" style="color: red;">Cerrar Sesión</a>
+        <a href="login.php" class="btn" style="color: red;">Cerrar Sesión</a>
     </div>
 
     <h3>Cursos disponibles para inscripción</h3>
