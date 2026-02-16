@@ -30,13 +30,13 @@
                     break;
                 case 'jefeDeEstudios':
                     $puntos += 2;
-                    break;  
+                    break;
                 case 'secretario':
                     $puntos += 2;
-                    break;  
+                    break;
                 case 'jefeDeDepartamento':
                     $puntos += 1;
-                    break;          
+                    break;
             }
         }
 
@@ -62,7 +62,7 @@
 
         if (!$fecha){
             return false;
-        } 
+        }
         
         $fechaActual = new DateTime();
 

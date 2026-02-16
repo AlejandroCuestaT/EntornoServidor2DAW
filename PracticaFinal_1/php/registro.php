@@ -36,17 +36,17 @@ if (isset($_POST['aceptar'])) {
     if ($nombre == "") { $errores .= "<li>El Nombre es obligatorio.</li>"; }
     if ($password == "") { $errores .= "<li>La contraseña es obligatoria.</li>"; }
 
-    if (!validarEmail($correo)) { 
-        $errores .= "<li>El correo electrónico no es válido.</li>"; 
+    if (!validarEmail($correo)) {
+        $errores .= "<li>El correo electrónico no es válido.</li>";
     }
 
-    if (!validarTelefono($telefono)) { 
-        $errores .= "<li>El teléfono no cumple el formato (ej: 623456789).</li>"; 
+    if (!validarTelefono($telefono)) {
+        $errores .= "<li>El teléfono no cumple el formato (ej: 623456789).</li>";
     }
 
     $fecha_formateada = date("d/m/Y", strtotime($fechaalt));
-    if ($fechaalt == "" || !validarFecha($fecha_formateada)) { 
-        $errores .= "<li>La fecha de nacimiento no es válida (DD/MM/AAAA).</li>"; 
+    if ($fechaalt == "" || !validarFecha($fecha_formateada)) {
+        $errores .= "<li>La fecha de nacimiento no es válida (DD/MM/AAAA).</li>";
     }
 
     if ($errores == "") {
@@ -76,7 +76,7 @@ if (isset($_POST['aceptar'])) {
         'nomgrupo'       => $nomgrupo,
         'nombrecargo'    => $nombrecargo,
         'situacion'      => $situacion,
-        'fechaalt'       => $fechaalt, 
+        'fechaalt'       => $fechaalt,
         'especialidad'   => $especialidad,
         'puntos'         => $puntos
     ];
