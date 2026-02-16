@@ -1,6 +1,7 @@
 <?php
 include_once("conexion.php");
 
+//Insertamos registro de solicitantes con todos los campos pedidos
 function insertarRegistro($datos) {
     global $conn; 
 
@@ -52,6 +53,7 @@ function insertarRegistro($datos) {
     }
 }
 
+//Enviamos el correo de que se ha aniadido correctamente
 function enviarCorreoConfirmacion($emailDestino, $nombreUsuario, $puntos, $especialidad) {
     $asunto = "Confirmacion de Registro - " . $nombreUsuario;
     $mensaje = "Hola " . $nombreUsuario . ",\r\n\r\n"

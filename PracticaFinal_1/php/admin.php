@@ -22,33 +22,61 @@ try {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Panel de Administración - Cursos</title>
+    <title>Administración</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; background: #f4f4f4; }
-        table { width: 100%; border-collapse: collapse; background: white; }
-        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
-        th { background: #333; color: white; }
-        .btn { padding: 8px 12px; border-radius: 4px; text-decoration: none; color: white; font-weight: bold; }
-        .btn-activar { background: #28a745; }
-        .btn-desactivar { background: #dc3545; }
-        .status-badge { padding: 4px 8px; border-radius: 4px; font-size: 0.9em; }
-        .bg-success { background: #d4edda; color: #155724; }
-        .bg-danger { background: #f8d7da; color: #721c24; }
+        body { 
+            font-family: sans-serif; 
+            margin: 20px; 
+        }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+        }
+        th, td { 
+            padding: 8px; 
+            border: 1px solid black; 
+            text-align: left; 
+        }
+        th { 
+            background-color: #f2f2f2; 
+        }
+        /* Botones tipo enlace básico */
+        .btn { 
+            padding: 3px 6px; 
+            text-decoration: none; 
+            color: black; 
+            border: 1px solid black;
+            font-size: 12px;
+            background: #fff;
+            margin-right: 8px; /* Separación entre botones */
+        }
+        .btn:hover {
+            background: #ddd;
+        }
+        /* Colores para los estados */
+        .status-abierto { 
+            color: green; 
+            font-weight: bold; 
+        }
+        .status-cerrado { 
+            color: red; 
+            font-weight: bold; 
+        }
     </style>
 </head>
 <body>
 
-    <h1>Bienvenido, <?php echo htmlspecialchars($_SESSION['admin']); ?></h1>
-    <h3>Gestión de Cursos</h3>
+    <h1>Administración de Cursos</h1>
+    <p>Usuario: <?php echo htmlspecialchars($_SESSION['admin']); ?></p>
 
     <table>
         <thead>
             <tr>
                 <th>Código</th>
-                <th>Nombre del Curso</th>
+                <th>Curso</th>
                 <th>Plazas</th>
                 <th>Estado</th>
-                <th>Acción</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -58,18 +86,20 @@ try {
                 <td><?php echo htmlspecialchars($curso['nombre']); ?></td>
                 <td><?php echo $curso['numeroplazas']; ?></td>
                 <td>
-                    <?php if ($curso['abierto'] == 1): ?>
-                        <span class="status-badge bg-success">Abierto</span>
+                    <?php if ($curso['abierto']): ?>
+                        <span class="status-abierto">Abierto</span>
                     <?php else: ?>
-                        <span class="status-badge bg-danger">Cerrado</span>
+                        <span class="status-cerrado">Cerrado</span>
                     <?php endif; ?>
                 </td>
                 <td>
-                    <?php if ($curso['abierto'] == 1): ?>
-                        <a href="cambiarEstadoCurso.php?id=<?php echo $curso['codigo']; ?>&estado=0" class="btn btn-desactivar">Desactivar</a>
-                    <?php else: ?>
-                        <a href="cambiarEstadoCurso.php?id=<?php echo $curso['codigo']; ?>&estado=1" class="btn btn-activar">Activar</a>
-                    <?php endif; ?>
+                    <a href="cambiarEstadoCurso.php?id=<?php echo $curso['codigo']; ?>&estado=<?php echo $curso['abierto'] ? '0' : '1'; ?>" class="btn">
+                        <?php echo $curso['abierto'] ? 'Desactivar' : 'Activar'; ?>
+                    </a>
+
+                    <a href="verAdmitidos.php?id=<?php echo $curso['codigo']; ?>" class="btn">Admitidos</a>
+
+                    <a href="eliminarCurso.php?id=<?php echo $curso['codigo']; ?>" class="btn" onclick="return confirm('¿Borrar curso?')">Eliminar</a>
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -77,7 +107,11 @@ try {
     </table>
 
     <br>
-    <a href="logout.php">Cerrar Sesión</a>
+    <a href="aniadirCurso.php" class="btn">Añadir Nuevo Curso</a>
+    
+    <br><br>
+
+    <a href="login.php">Cerrar Sesión</a>
 
 </body>
 </html>

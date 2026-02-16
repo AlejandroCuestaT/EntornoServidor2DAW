@@ -1,4 +1,5 @@
 <?php
+    //Calcula los puntos al registrar un usuario con el algoritmo de la practica
     function calcularPuntos($datosUsuario){
         $puntos = 0;
 
@@ -54,6 +55,7 @@
 
     }
 
+    //Calcula la antiguedad comparando la fecha de alta y la de hoy
     function calcularAntiguedad($fechaalt){
 
         $fecha = DateTime::createFromFormat('d/m/Y', $fechaalt);
