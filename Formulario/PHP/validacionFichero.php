@@ -1,4 +1,4 @@
-<?php 
+<?php
     $nombre = '';
     $password = '';
     $sexo = '';
