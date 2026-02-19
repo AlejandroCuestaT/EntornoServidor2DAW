@@ -35,8 +35,10 @@ function enviarEmail($email, $asunto, $body, $attach)
     if (!$mail->send()) {
         echo $mail->ErrorInfo;
     } else {
-        echo 'El mensaje ha sido enviado correctamente. Revise su bandeja de entrada.';
-        echo "<strong><a href='login.php'>Iniciar sesión</a></strong>";
+        
+        echo 'El mensaje ha sido enviado correctamente. <br> Revise su bandeja de entrada.';
+        echo '<br>';
+        echo "<strong><a href='home.php'>Home</a></strong>";
     }
 }
 
