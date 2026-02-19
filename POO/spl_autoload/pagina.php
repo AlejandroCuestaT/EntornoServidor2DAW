@@ -17,6 +17,9 @@ spl_autoload_register(function ($clase) {
             $this->pie=new Pie($texto2);
         }
 
+        private $obj1 = new Pie("obj1");
+        private $obj2 = clone($obj1);
+
         public function insertarCuerpo($texto){
             $this->cuerpo->insertarParrafo($texto);
         }
