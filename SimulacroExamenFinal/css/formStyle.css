@@ -1,0 +1,88 @@
+/* Estilo básico para mi formulario */
+body {
+    background-color: #f0f0f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.caja-form {
+    background-color: #ffffff;
+    width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #999;
+    border-radius: 5px; /* Un poco de redondeado suave */
+}
+
+h3 {
+    text-align: center;
+    color: #333;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.campo-input {
+    margin-bottom: 12px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 4px;
+    color: #555;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    box-sizing: border-box; /* Para que no se salga del borde */
+}
+
+.error-msg {
+    color: #ff0000;
+    font-size: 12px;
+    font-weight: bold;
+    display: block;
+    margin-top: 2px;
+}
+
+.zona-check {
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+}
+
+.zona-check label {
+    display: inline-block;
+    font-weight: normal;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+#boton-enviar {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+#boton-enviar:hover {
+    background-color: #0056b3;
+}
+
+.exito {
+    color: green;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+}

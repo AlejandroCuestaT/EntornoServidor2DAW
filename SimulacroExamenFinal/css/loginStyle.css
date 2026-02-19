@@ -1,0 +1,74 @@
+#formulario {
+    max-width: 400px; 
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+h3 {
+    text-align: center;
+    color: #333;
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px; 
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box; 
+    transition: border-color 0.3s;
+}
+
+.input:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+/* Estilo para el mensaje de error de PHP */
+h4 {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 15px;
+}
+
+#submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+#submit:hover {
+    background-color: #0056b3;
+}
+estilosLogin.css
+Mostrando estilosLogin.css.
