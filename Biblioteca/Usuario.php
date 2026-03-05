@@ -1,12 +1,12 @@
 <?php
 
 class Usuario{
-    private $dni;
-    private $nombre;
-    private $prestamos;
-    private $maxPrestamos;
-    private $limitePrestamos;
-    private $numPrestamos;
+    protected $dni;
+    protected $nombre;
+    protected $prestamos; //Array de Documentos
+    protected $maxPrestamos;
+    protected $limitePrestamos;
+    protected $numPrestamos;
 
     public function __construct($dni = null, $nombre = null, $maxPrestamos = 0, $limitePrestamos = 1){
         $this->dni = $dni;
@@ -25,6 +25,43 @@ class Usuario{
             return true;
         }
         return false;
+    }
+
+    //Aniade documento si no alcanza el limite
+    public function aniadeDocumentoPrestado($doc){
+        if (!$this->alcanzadoLimiteDePrestamos()) {
+            if (!$doc->estaPrestado()) {
+                $this->prestamos[$this->numPrestamos] = $doc;
+                $this->numPrestamos++;
+            }
+        }
+    }
+
+    //Elimina el documento prestado y le quira una el numero de prestamos
+    public function eliminaDocumentoPrestado($codigo) {
+        $pos = $this->buscaDocumentoPrestado($codigo);
+        if ($pos !== -1) {
+        array_splice($this->prestamos, $pos, 1);
+
+        $this->numPrestamos--;
+        } else {
+            echo "El documento con código " . $codigo . " no está prestado por este usuario.<br>";
+        }
+    }
+
+    //
+    public function buscaDocumentoPrestado($codigo) {
+    foreach ($this->prestamos as $i => $doc) {
+        if ($doc->codigo === $codigo) {
+            return $i;
+        }
+    }
+        return -1;
+    }
+
+    //Retorna el limite del Prestamo
+    public function plazoPrestamoDocumento() {
+        return $this->limitePrestamos;
     }
 
     //Getters y Setters magicos
@@ -50,15 +87,3 @@ class Usuario{
 }
     
 }
-
-$usuario = new Usuario("12345678Z", "Pepe Perez", 5, 10);
-
-echo $usuario;
-echo '<br><br>';
-echo "El DNI del usuario es: " . $usuario->dni;
-echo '<br><br>';
-$usuario->nombre = "Jose Perez";
-echo "Usuario tras el cambio: " . $usuario;
-echo '<br><br>';
-$usuario2 = new Usuario(); 
-echo $usuario2;

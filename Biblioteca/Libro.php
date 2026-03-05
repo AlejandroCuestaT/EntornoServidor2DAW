@@ -17,19 +17,3 @@ class Libro extends Documento{
         return parent::__toString() . " - " . $this->anioPublicacion;
     }
 }
-
-$miLibro = new Libro("1", "Quijote", 1605);
-
-echo $miLibro;
-echo '<br><br>';
-
-echo "Año de publicación: " . $miLibro->anioPublicacion;
-echo '<br><br>';
-
-$miLibro->titulo = "El ingenioso hidalgo Don Quijote";
-
-echo "Libro actualizado: " . $miLibro;
-echo '<br><br>';
-
-$libroVacio = new Libro(); 
-echo $libroVacio;

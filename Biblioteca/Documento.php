@@ -1,9 +1,9 @@
 <?php
 
 class Documento {
-    private $codigo;
-    private $titulo;
-    private $prestadoA;
+    protected $codigo;
+    protected $titulo;
+    protected $prestadoA; //Objeto usuario
 
     //Pongo el = null para que pueda no pasarme parametros, solo codigo
     //o codigo y titulo
@@ -21,6 +21,31 @@ class Documento {
             return true;
         }
         return false;
+    }
+
+    //Si esta ya prestado avisa y si no recoge el objeto usuario
+    public function prestaAUsuario($user) {
+        if ($this->prestadoA !== null) {
+            echo "Documento prestado a: " . $this->prestadoA->nombre . "<br>";
+        } else {
+            $this->prestadoA = $user;
+            
+            $user->aniadeDocumentoPrestado($this);
+        }
+    }
+
+    //Elimina el usuario de prestadoA
+    public function devuelve(){
+        $this->prestadoA->eliminaDocumentoPrestado($this->codigo);
+        $this->prestadoA = null;
+    }
+
+    //Manda a la funcion plazoPrestamoDocumento
+    public function plazoPrestamo(){
+        if ($this->prestadoA !== null) {
+            return $this->prestadoA->plazoPrestamoDocumento();
+        }
+        return -1;
     }
 
     //Getters y Setters magicos
@@ -42,22 +67,3 @@ class Documento {
     }
 
 }
-
-    $documento = new Documento("1", "Doc1"); 
-      
-    //Llamada a metodo magico toString
-    echo $documento;
-    echo '<br><br>';
-
-    //Llamada a metodo magico get
-    echo $documento->codigo;
-    echo '<br><br>';
-
-    //Llamada a metodo magico set
-    $documento->titulo="Pinta y colorea";
-
-    //Miramos que el setter ha cambiado el titulo
-    echo $documento;
-
-    $documento2 = new Documento(); 
-    echo $documento2;
