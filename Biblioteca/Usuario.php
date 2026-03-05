@@ -8,7 +8,7 @@ class Usuario{
     private $limitePrestamos;
     private $numPrestamos;
 
-    public function __construct($dni = null, $nombre = null, $maxPrestamos = 0, $limitePrestamos = 0){
+    public function __construct($dni = null, $nombre = null, $maxPrestamos = 0, $limitePrestamos = 1){
         $this->dni = $dni;
         $this->nombre = $nombre;
         $this->maxPrestamos = $maxPrestamos;
