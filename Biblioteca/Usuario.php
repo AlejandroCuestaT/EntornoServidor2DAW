@@ -1,60 +1,64 @@
 <?php
-class Usuario {
-    protected $DNI;
-    protected $nombre;
-    protected $prestamos;
-    protected $maxPrestamos;
-    protected $limitePrestamos;
 
-    public function __construct($dni = null, $nom = null, $maxP = 0, $lP = 0) {
-        $this->DNI = $dni;
-        $this->nombre = $nom;
-        $this->prestamos = []; // Array dinámico
-        $this->maxPrestamos = $maxP;
-        $this->limitePrestamos = $lP;
+class Usuario{
+    private $dni;
+    private $nombre;
+    private $prestamos;
+    private $maxPrestamos;
+    private $limitePrestamos;
+    private $numPrestamos;
+
+    public function __construct($dni = null, $nombre = null, $maxPrestamos = 0, $limitePrestamos = 0){
+        $this->dni = $dni;
+        $this->nombre = $nombre;
+        $this->maxPrestamos = $maxPrestamos;
+        $this->limitePrestamos = $limitePrestamos;
+        $this->numPrestamos = 0;
+        $this->prestamos = array();
     }
 
-    public function alcanzadoLimitePrestamos() {
-        return count($this->prestamos) >= $this->maxPrestamos;
+    //Funciones
+
+    //Si numero de prestamos es mayor o igual a el maximo de prestamos devuelve true
+    public function alcanzadoLimiteDePrestamos(){
+        if($this->numPrestamos >= $this->maxPrestamos){
+            return true;
+        }
+        return false;
     }
 
-    public function añadeDocumentoPrestado($doc) {
-        if (!$this->alcanzadoLimitePrestamos()) {
-            if (!$doc->estaPrestado()) {
-                $this->prestamos[] = $doc; // Añade al final del array
-            }
+    //Getters y Setters magicos
+    public function __get($atr) {
+        if (property_exists($this, $atr)) {
+            return $this->$atr;
         }
     }
 
-    public function eliminaDocumentoPrestado($codigo) {
-        $pos = $this->buscaDocumentoPrestado($codigo);
-        if ($pos !== -1) {
-            array_splice($this->prestamos, $pos, 1); // Elimina y reindexa el array
-        } else {
-            echo "El documento con código " . $codigo . " no está prestado\n";
+    public function __set($atr, $val) {
+        if (property_exists($this, $atr)) {
+            $this->$atr = $val;
         }
     }
 
-    public function buscaDocumentoPrestado($codigo) {
-        foreach ($this->prestamos as $index => $doc) {
-            if ($doc->getCodigo() === $codigo) {
-                return $index;
-            }
-        }
-        return -1;
-    }
-
-    public function getDNI() { return $this->DNI; }
-    public function setDNI($DNI) { $this->DNI = $DNI; }
-    public function getNombre() { return $this->nombre; }
-    public function setNombre($nombre) { $this->nombre = $nombre; }
-    public function getMaxPrestamos() { return $this->maxPrestamos; }
-    public function setMaxPrestamos($maxPrestamos) { $this->maxPrestamos = $maxPrestamos; }
-    public function plazoPrestamoDocumento() { return $this->limitePrestamos; }
-    public function setLimitePrestamos($limitePrestamos) { $this->limitePrestamos = $limitePrestamos; }
-
+    //toString magico
     public function __toString() {
-        return "DNI: " . $this->DNI . " Nombre: " . $this->nombre . " Préstamos: " . count($this->prestamos);
-    }
+    return "Nombre: " . $this->nombre . 
+           " | DNI: " . $this->dni . 
+           " | Prestamos Maximos: " . $this->maxPrestamos . 
+           " | Limite de prestamos: " . $this->limitePrestamos . 
+           " | Prestamos actuales: " . $this->numPrestamos;
 }
-?>
+    
+}
+
+$usuario = new Usuario("12345678Z", "Pepe Perez", 5, 10);
+
+echo $usuario;
+echo '<br><br>';
+echo "El DNI del usuario es: " . $usuario->dni;
+echo '<br><br>';
+$usuario->nombre = "Jose Perez";
+echo "Usuario tras el cambio: " . $usuario;
+echo '<br><br>';
+$usuario2 = new Usuario(); 
+echo $usuario2;

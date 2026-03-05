@@ -1,17 +1,35 @@
 <?php
-class Libro extends Documento {
-    private $añoPublicacion;
 
-    public function __construct($cod = null, $til = null, $anio = 0) {
-        parent::__construct($cod, $til);
-        $this->añoPublicacion = $anio;
+require_once 'Documento.php';
+
+class Libro extends Documento{
+
+    //Tiene que ser protegido porque si no no puedo usar este atributo con
+    //los getters y setters del padre
+    protected $anioPublicacion;
+    
+    public function __construct($codigo = null, $titulo = null, $anioPublicacion = 0) {
+        parent::__construct($codigo,$titulo);
+        $this->anioPublicacion = $anioPublicacion;
     }
-
-    public function getAñoPublicacion() { return $this->añoPublicacion; }
-    public function setAñoPublicacion($añoPublicacion) { $this->añoPublicacion = $añoPublicacion; }
 
     public function __toString() {
-        return parent::__toString() . " Año publicación: " . $this->añoPublicacion;
+        return parent::__toString() . " - " . $this->anioPublicacion;
     }
 }
-?>
+
+$miLibro = new Libro("1", "Quijote", 1605);
+
+echo $miLibro;
+echo '<br><br>';
+
+echo "Año de publicación: " . $miLibro->anioPublicacion;
+echo '<br><br>';
+
+$miLibro->titulo = "El ingenioso hidalgo Don Quijote";
+
+echo "Libro actualizado: " . $miLibro;
+echo '<br><br>';
+
+$libroVacio = new Libro(); 
+echo $libroVacio;

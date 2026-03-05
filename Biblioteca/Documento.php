@@ -1,52 +1,63 @@
 <?php
-class Documento {
-    protected $codigo;
-    protected $titulo;
-    protected $prestadoA;
 
-    public function __construct($cod = null, $til = null) {
-        $this->codigo = $cod;
-        $this->titulo = $til;
+class Documento {
+    private $codigo;
+    private $titulo;
+    private $prestadoA;
+
+    //Pongo el = null para que pueda no pasarme parametros, solo codigo
+    //o codigo y titulo
+    public function __construct($codigo = null, $titulo = null) {
+        $this->codigo = $codigo;
+        $this->titulo = $titulo;
         $this->prestadoA = null;
     }
 
-    public function estaPrestado() {
-        return $this->prestadoA !== null;
+    //Funciones
+
+    //Si prestadoA no esta nulo, devuelve true
+    public function estaPrestado(){
+        if($this -> prestadoA!=null){
+            return true;
+        }
+        return false;
     }
 
-    public function prestaAUsuario($user) {
-        if ($this->prestadoA !== null) {
-            echo "Prestado a " . $this->prestadoA->getNombre() . PHP_EOL;
-        } else {
-            $this->prestadoA = $user;
-            $user->añadeDocumentoPrestado($this);
+    //Getters y Setters magicos
+    public function __get($atr) {
+        if (property_exists($this, $atr)) {
+            return $this->$atr;
         }
     }
 
-    public function devuelve() {
-        if ($this->prestadoA !== null) {
-            $this->prestadoA->eliminaDocumentoPrestado($this->codigo);
-            $this->prestadoA = null;
+    public function __set($atr, $val) {
+        if (property_exists($this, $atr)) {
+            $this->$atr = $val;
         }
     }
 
-    public function plazoPrestamo() {
-        if ($this->prestadoA !== null) {
-            return $this->prestadoA->plazoPrestamoDocumento();
-        }
-        return -1;
-    }
-
-    public function getCodigo() { return $this->codigo; }
-    public function setCodigo($codigo) { $this->codigo = $codigo; }
-    public function getTitulo() { return $this->titulo; }
-    public function setTitulo($titulo) { $this->titulo = $titulo; }
-    public function getPrestadoA() { return $this->prestadoA; }
-    public function setPrestadoA($prestadoA) { $this->prestadoA = $prestadoA; }
-
+    //Metodo magico, se llama haciendo echo del objeto que quieras
     public function __toString() {
-        $nombrePrestado = $this->prestadoA ? $this->prestadoA->getNombre() : "Nadie";
-        return "Código: " . $this->codigo . " Título: " . $this->titulo . " Prestado a: " . $nombrePrestado . "\n";
+        return "Documento: " . $this->codigo . " - " . $this->titulo;
     }
+
 }
-?>
+
+    $documento = new Documento("1", "Doc1"); 
+      
+    //Llamada a metodo magico toString
+    echo $documento;
+    echo '<br><br>';
+
+    //Llamada a metodo magico get
+    echo $documento->codigo;
+    echo '<br><br>';
+
+    //Llamada a metodo magico set
+    $documento->titulo="Pinta y colorea";
+
+    //Miramos que el setter ha cambiado el titulo
+    echo $documento;
+
+    $documento2 = new Documento(); 
+    echo $documento2;
