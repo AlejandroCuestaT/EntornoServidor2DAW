@@ -1,0 +1,131 @@
+header{
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+#formulario {
+    display: flex;
+    max-width: 400px; 
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px; 
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+table {
+    margin: 20px auto;
+    border-collapse: separate; 
+    border-spacing: 0; 
+    width: 80%; 
+    background-color: #f9f9f9; 
+    border-radius: 10px;
+    overflow: hidden; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contenedor{
+    width: 500px;
+    height: 100px;
+    background-color: whitesmoke; 
+    margin: 0 auto;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+table th {
+    background-color: rgb(102, 102, 240);
+    color: white; 
+    padding: 12px 20px; 
+    text-align: left; 
+    font-size: 18px; 
+    font-weight: bold; 
+    border-bottom: 2px solid #ddd;
+}
+table td {
+    padding: 12px 20px; 
+    text-align: left; 
+    border-bottom: 1px solid #ddd; 
+    color: #333; 
+    font-size: 16px;
+}
+table tr:nth-child(even) {
+    background-color: #f2f2f2; 
+}
+table tr:hover {
+    background-color: #e2e2e2; 
+    cursor: pointer; 
+}
+table td a {
+    text-decoration: none;
+    color: #37e9ef;
+    font-weight: bold;
+}
+.enlaces{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+h2,h3{
+    text-align: center;
+    margin-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#logo{
+    width: 300px;
+    height: auto;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+#botones{
+    margin-left: auto;
+    margin-right: 20px;
+}
+button{
+    display: inline-block;
+    padding: 15px;
+    width: 150px;
+    background-color: rgb(102, 102, 240);
+    border-radius: 5px;
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+    border: 1px solid rgb(68, 68, 230);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+
+}
+#insertar{
+    background-color: rgb(102, 102, 240);
+    padding: 10px;
+}
+.logOutCont {
+    display: flex;            
+    justify-content: center;  
+    align-items: center;      
+    width: 100%;                         
+}
+
+.botonPagina{
+    margin-left: 20px;
+    background-color: rgb(68, 68, 230);
+    width: 100px;
+    color: white;
+    height: 50px;
+}
+#botonesPag{
+    margin-left: 25%;
+}
