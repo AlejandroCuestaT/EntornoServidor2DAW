@@ -1,0 +1,125 @@
+/* Estilos básicos para toda la aplicación */
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Caja centrada para el login */
+.caja-login {
+    width: 350px;
+    margin: 80px auto;
+    background: white;
+    padding: 30px;
+    border: 1px solid #ccc;
+}
+
+.caja-login h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Contenedor general */
+.contenedor {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+/* Formularios */
+form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 6px;
+    margin-top: 4px;
+    box-sizing: border-box;
+}
+
+form button {
+    margin-top: 15px;
+    padding: 8px 20px;
+    background: #0066cc;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #0052a3;
+}
+
+/* Tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background: #0066cc;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* Mensajes de error y éxito */
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.ok {
+    color: green;
+    font-weight: bold;
+}
+
+/* Resaltar filas con sobrecoste */
+.sobrecoste {
+    background: #ffcccc !important;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 8px 0;
+}
+
+nav ul li a {
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+a.volver {
+    display: inline-block;
+    margin-top: 15px;
+    color: #0066cc;
+}
